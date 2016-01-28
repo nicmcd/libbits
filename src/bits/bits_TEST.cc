@@ -148,10 +148,22 @@ TEST(ceilLog2, u32) {
   }
 }
 
-TEST(reverse, u32) {
+TEST(reverse, u32_full_range) {
   ASSERT_EQ(bits::reverse<u32>(0u), 0u);
   ASSERT_EQ(bits::reverse<u32>(1u), 2147483648u);
   ASSERT_EQ(bits::reverse<u32>(2904892549u), 2703533237u);
   ASSERT_EQ(bits::reverse<u32>(2703533237u), 2904892549u);
   ASSERT_EQ(bits::reverse<u32>(2147483648u), 1u);
+}
+
+TEST(reverse, u32_limited_range) {
+  ASSERT_EQ(bits::reverse<u32>(0u, 8), 0u);
+  ASSERT_EQ(bits::reverse<u32>(1u, 4), 8u);
+  ASSERT_EQ(bits::reverse<u32>(8u, 4), 1u);
+  ASSERT_EQ(bits::reverse<u32>(1u, 8), 128u);
+  ASSERT_EQ(bits::reverse<u32>(128u, 8), 1u);
+  ASSERT_EQ(bits::reverse<u32>(2u, 8), 64u);
+  ASSERT_EQ(bits::reverse<u32>(64u, 8), 2u);
+  ASSERT_EQ(bits::reverse<u32>(5u, 8), 160u);
+  ASSERT_EQ(bits::reverse<u32>(160u, 8), 5u);
 }

@@ -48,7 +48,7 @@ template <typename T>
 T ceilLog2(T _uint);
 
 template <typename T>
-T reverse(T _v);
+T reverse(T _v, u8 _bits = sizeof(T) * CHAR_BIT);
 
 }  // namespace bits
 

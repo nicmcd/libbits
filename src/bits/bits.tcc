@@ -73,16 +73,23 @@ T ceilLog2(T _uint) {
 }
 
 template <typename T>
-T reverse(T _v) {
-  // from: http://graphics.stanford.edu/~seander/bithacks.html
+T reverse(T _v, u8 _bits) {
+  const u8 MAX_BITS = sizeof(T) * CHAR_BIT;
+  assert(_bits <= MAX_BITS);
+  if (_bits != MAX_BITS) {
+    assert(_v < pow2<T>(_bits));
+  }
+
+  // modified from: http://graphics.stanford.edu/~seander/bithacks.html
   T r = _v;
-  T s = sizeof(_v) * CHAR_BIT - 1;
+  T s = MAX_BITS - 1;
   for (_v >>= 1; _v; _v >>= 1) {
     r <<= 1;
     r |= _v & 1;
     s--;
   }
   r <<= s;  // shift when v's highest bits are zero
+  r >>= MAX_BITS - _bits;  // limit bit range
   return r;
 }
 
