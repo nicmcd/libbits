@@ -171,3 +171,21 @@ TEST(reverse, u32_limited_range) {
   ASSERT_EQ(bits::reverse<u32>(5u, 8), 160u);
   ASSERT_EQ(bits::reverse<u32>(160u, 8), 5u);
 }
+
+TEST(rotateRight, u32) {
+  ASSERT_EQ(bits::rotateRight<u32>(1u), 2147483648u);
+  ASSERT_EQ(bits::rotateRight<u32>(1u, 32), 2147483648u);
+  ASSERT_EQ(bits::rotateRight<u32>(1u, 16), 32768u);
+  ASSERT_EQ(bits::rotateRight<u32>(32768u, 16), 16384u);
+  ASSERT_EQ(bits::rotateRight<u32>(16384u, 16), 8192u);
+  ASSERT_EQ(bits::rotateRight<u32>(43008u, 16), 21504u);
+}
+
+TEST(rotateLeft, u32) {
+  ASSERT_EQ(bits::rotateLeft<u32>(2147483648u), 1u);
+  ASSERT_EQ(bits::rotateLeft<u32>(2147483648u, 32), 1u);;
+  ASSERT_EQ(bits::rotateLeft<u32>(32768u, 16), 1u);
+  ASSERT_EQ(bits::rotateLeft<u32>(16384u, 16), 32768u);
+  ASSERT_EQ(bits::rotateLeft<u32>(8192u, 16), 16384u);
+  ASSERT_EQ(bits::rotateLeft<u32>(21504u, 16), 43008u);
+}

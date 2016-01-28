@@ -50,6 +50,12 @@ T ceilLog2(T _uint);
 template <typename T>
 T reverse(T _v, u8 _bits = sizeof(T) * CHAR_BIT);
 
+template <typename T>
+T rotateRight(T _v, u8 _bits = sizeof(T) * CHAR_BIT);
+
+template <typename T>
+T rotateLeft(T _v, u8 _bits = sizeof(T) * CHAR_BIT);
+
 }  // namespace bits
 
 #include "bits/bits.tcc"

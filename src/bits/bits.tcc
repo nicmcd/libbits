@@ -93,6 +93,33 @@ T reverse(T _v, u8 _bits) {
   return r;
 }
 
+template <typename T>
+T rotateRight(T _v, u8 _bits) {
+  const u8 MAX_BITS = sizeof(T) * CHAR_BIT;
+  assert(_bits <= MAX_BITS);
+  if (_bits != MAX_BITS) {
+    assert(_v < pow2<T>(_bits));
+  }
+
+  T w = _v & 0x1;  // detect wrap
+  T r = (_v >> 1) | (w << (_bits - 1));
+  return r;
+}
+
+template <typename T>
+T rotateLeft(T _v, u8 _bits) {
+  const u8 MAX_BITS = sizeof(T) * CHAR_BIT;
+  assert(_bits <= MAX_BITS);
+  if (_bits != MAX_BITS) {
+    assert(_v < pow2<T>(_bits));
+  }
+
+  T t = 1 << (_bits - 1);  // find top bit location
+  bool w = _v & t;  // detect wrap
+  T r = ((_v << 1) & ((1 << _bits) - 1)) | w;
+  return r;
+}
+
 }  // namespace bits
 
 #endif  // BITS_BITS_H_
