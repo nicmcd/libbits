@@ -38,7 +38,7 @@ namespace bits {
 
 template <typename T>
 T pow2(T _uint) {
-  assert(_uint < (sizeof(T) * 8));
+  assert(_uint < (sizeof(T) * CHAR_BIT));
   return (T)1 << _uint;
 }
 
@@ -59,7 +59,7 @@ T floorLog2(T _uint) {
 template <typename T>
 T ceilLog2(T _uint) {
   // top end bail out
-  T e = sizeof(T) * 8;
+  T e = sizeof(T) * CHAR_BIT;
   if (_uint >= ((T)1 << (e - 1))) {
     return e;
   }
@@ -70,6 +70,20 @@ T ceilLog2(T _uint) {
     e++;
   }
   return e;
+}
+
+template <typename T>
+T reverse(T _v) {
+  // from: http://graphics.stanford.edu/~seander/bithacks.html
+  T r = _v;
+  T s = sizeof(_v) * CHAR_BIT - 1;
+  for (_v >>= 1; _v; _v >>= 1) {
+    r <<= 1;
+    r |= _v & 1;
+    s--;
+  }
+  r <<= s;  // shift when v's highest bits are zero
+  return r;
 }
 
 }  // namespace bits

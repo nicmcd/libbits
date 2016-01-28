@@ -147,3 +147,11 @@ TEST(ceilLog2, u32) {
     ASSERT_EQ(bits::ceilLog2<u32>(rnd), (u32)std::ceil(std::log2((f64)rnd)));
   }
 }
+
+TEST(reverse, u32) {
+  ASSERT_EQ(bits::reverse<u32>(0u), 0u);
+  ASSERT_EQ(bits::reverse<u32>(1u), 2147483648u);
+  ASSERT_EQ(bits::reverse<u32>(2904892549u), 2703533237u);
+  ASSERT_EQ(bits::reverse<u32>(2703533237u), 2904892549u);
+  ASSERT_EQ(bits::reverse<u32>(2147483648u), 1u);
+}

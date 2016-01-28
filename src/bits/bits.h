@@ -47,6 +47,9 @@ T floorLog2(T _uint);
 template <typename T>
 T ceilLog2(T _uint);
 
+template <typename T>
+T reverse(T _v);
+
 }  // namespace bits
 
 #include "bits/bits.tcc"
