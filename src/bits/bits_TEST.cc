@@ -85,6 +85,8 @@ TEST(pow2, u64) {
 
 
 TEST(isPow2, u32) {
+  ASSERT_FALSE(bits::isPow2<u32>(0u));
+
   for (u32 b = 0; b < 32; b++) {
     u32 v = (u64)1 << b;
     ASSERT_TRUE(bits::isPow2<u32>(v));
@@ -107,6 +109,8 @@ TEST(isPow2, u32) {
 }
 
 TEST(isPow2, u64) {
+  ASSERT_FALSE(bits::isPow2<u64>(0lu));
+
   for (u64 b = 0; b < 64; b++) {
     u64 v = (u64)1 << b;
     ASSERT_TRUE(bits::isPow2<u64>(v));

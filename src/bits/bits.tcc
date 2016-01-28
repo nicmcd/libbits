@@ -44,7 +44,7 @@ T pow2(T _uint) {
 
 template <typename T>
 bool isPow2(T _uint) {
-  return (_uint & (_uint - (T)1)) == 0;
+  return _uint && !(_uint & (_uint - (T)1));
 }
 
 template <typename T>
