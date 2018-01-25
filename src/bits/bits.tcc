@@ -48,6 +48,17 @@ bool isPow2(T _uint) {
 }
 
 template <typename T>
+T ceilPow2(T _uint) {
+  for (T c = 0; c < (sizeof(T) * CHAR_BIT); c++) {
+    T v = 1 << c;
+    if (v >= _uint) {
+      return v;
+    }
+  }
+  assert(false);  // _uint is too large
+}
+
+template <typename T>
 T floorLog2(T _uint) {
   T r = 0;
   while (_uint >>= (T)1) {

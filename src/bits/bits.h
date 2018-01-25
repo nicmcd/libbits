@@ -42,6 +42,9 @@ template <typename T>
 bool isPow2(T _uint);
 
 template <typename T>
+T ceilPow2(T _uint);
+
+template <typename T>
 T floorLog2(T _uint);
 
 template <typename T>

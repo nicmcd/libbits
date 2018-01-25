@@ -132,6 +132,30 @@ TEST(isPow2, u64) {
   }
 }
 
+TEST(ceilPow2, u8) {
+  ASSERT_EQ(bits::ceilPow2<u8>(0), 1);
+  ASSERT_EQ(bits::ceilPow2<u8>(1), 1);
+  ASSERT_EQ(bits::ceilPow2<u8>(2), 2);
+  ASSERT_EQ(bits::ceilPow2<u8>(3), 4);
+  ASSERT_EQ(bits::ceilPow2<u8>(4), 4);
+  ASSERT_EQ(bits::ceilPow2<u8>(5), 8);
+  ASSERT_EQ(bits::ceilPow2<u8>(6), 8);
+  ASSERT_EQ(bits::ceilPow2<u8>(7), 8);
+  ASSERT_EQ(bits::ceilPow2<u8>(8), 8);
+  ASSERT_EQ(bits::ceilPow2<u8>(9), 16);
+  ASSERT_EQ(bits::ceilPow2<u8>(15), 16);
+  ASSERT_EQ(bits::ceilPow2<u8>(16), 16);
+  ASSERT_EQ(bits::ceilPow2<u8>(17), 32);
+  ASSERT_EQ(bits::ceilPow2<u8>(31), 32);
+  ASSERT_EQ(bits::ceilPow2<u8>(32), 32);
+  ASSERT_EQ(bits::ceilPow2<u8>(33), 64);
+  ASSERT_EQ(bits::ceilPow2<u8>(63), 64);
+  ASSERT_EQ(bits::ceilPow2<u8>(64), 64);
+  ASSERT_EQ(bits::ceilPow2<u8>(65), 128);
+  ASSERT_EQ(bits::ceilPow2<u8>(127), 128);
+  ASSERT_EQ(bits::ceilPow2<u8>(128), 128);
+}
+
 TEST(floorLog2, u32) {
   std::mt19937_64 prng;
   prng.seed(123245678);
