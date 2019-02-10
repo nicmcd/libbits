@@ -28,6 +28,9 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
+#ifndef BITS_BITS_TCC_
+#define BITS_BITS_TCC_
+
 #ifndef BITS_BITS_H_
 #error "do not include this file, use the .h instead"
 #else  // BITS_BITS_H_
@@ -134,3 +137,4 @@ T rotateLeft(T _v, u8 _bits) {
 }  // namespace bits
 
 #endif  // BITS_BITS_H_
+#endif  // BITS_BITS_TCC_
