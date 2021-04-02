@@ -72,13 +72,13 @@ T floorLog2(T _uint) {
 
 template <typename T>
 T ceilLog2(T _uint) {
-  // top end bail out
+  // This is the top end bail out.
   T e = sizeof(T) * CHAR_BIT;
   if (_uint >= ((T)1 << (e - 1))) {
     return e;
   }
 
-  // all but the highest case
+  // Catches all but the highest case.
   e = 0;
   while (((T)1 << e) < _uint) {
     e++;
@@ -94,7 +94,7 @@ T reverse(T _v, u8 _bits) {
     assert(_v < pow2<T>(_bits));
   }
 
-  // modified from: http://graphics.stanford.edu/~seander/bithacks.html
+  // Modified from: http://graphics.stanford.edu/~seander/bithacks.html
   T r = _v;
   T s = MAX_BITS - 1;
   for (_v >>= 1; _v; _v >>= 1) {
@@ -102,7 +102,7 @@ T reverse(T _v, u8 _bits) {
     r |= _v & 1;
     s--;
   }
-  r <<= s;  // shift when v's highest bits are zero
+  r <<= s;                 // shift when v's highest bits are zero
   r >>= MAX_BITS - _bits;  // limit bit range
   return r;
 }
@@ -129,7 +129,7 @@ T rotateLeft(T _v, u8 _bits) {
   }
 
   T t = 1 << (_bits - 1);  // find top bit location
-  bool w = _v & t;  // detect wrap
+  bool w = _v & t;         // detect wrap
   T r = ((_v << 1) & ((1 << _bits) - 1)) | w;
   return r;
 }
