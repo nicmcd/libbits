@@ -10,5 +10,5 @@ Description: A simple C++ library containing bit twiddling functions.
 URL: https://github.com/nicmcd/libbits
 Version: 0.1.0
 Requires: libprim
-Libs: -L${libdir} -lbits
+Libs: -L${libdir} -lbits 
 Cflags: -I${includedir}
