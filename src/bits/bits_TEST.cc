@@ -245,7 +245,6 @@ TEST(rotateRight, u32) {
 TEST(rotateLeft, u32) {
   ASSERT_EQ(bits::rotateLeft<u32>(2147483648u), 1u);
   ASSERT_EQ(bits::rotateLeft<u32>(2147483648u, 32), 1u);
-  ;
   ASSERT_EQ(bits::rotateLeft<u32>(32768u, 16), 1u);
   ASSERT_EQ(bits::rotateLeft<u32>(16384u, 16), 32768u);
   ASSERT_EQ(bits::rotateLeft<u32>(8192u, 16), 16384u);
